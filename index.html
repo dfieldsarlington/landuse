@@ -19,15 +19,16 @@
 <div id="chartContainer"></div>
 <script type="text/javascript">
       var svg = dimple.newSvg("#chartContainer", "100%", "100%");
-      d3.csv("https://raw.githubusercontent.com/dfieldsarlington/landuse/master/LandUse_NonCompliance_2014.csv", function (data) {
-          
+      d3.csv("https://raw.githubusercontent.com/dfieldsarlington/landuse/gh-pages/landuse_noncompliance_2014.csv", function (data) {
+		data = dimple.filterData(data, "Zone");
         var myChart = new dimple.chart(svg, data);
-        myChart.setBounds("15%", "5%", "65%", "75%")
+        myChart.setBounds(60, 30, 500, 330)
         myChart.addMeasureAxis("x", "Acres");
         myChart.addMeasureAxis("y", "# of Properties");
-        myChart.addSeries("Zone", dimple.plot.bubble);
-        myChart.addLegend("90%", "10%", "10%", "90%", "right");
+        myChart.addSeries("Zone, dimple.plot.bubble);
+        myChart.addLegend(200, 10, 360, 20, "right");
         myChart.draw();
+      });
   </script>
   </body>
   </html>
