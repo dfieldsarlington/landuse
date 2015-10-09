@@ -20,7 +20,8 @@
 <script type="text/javascript">
     var svg = dimple.newSvg("#chartContainer", "100%", "100%");
     d3.csv("https://raw.githubusercontent.com/dfieldsarlington/landuse/gh-pages/landuse_noncompliance_2014.csv", function (data) {
-      var myChart = new dimple.chart(svg, data);
+      dimple.filterData(data, "Zone");
+	  var myChart = new dimple.chart(svg, data);
       myChart.setBounds(60, 30, 510, 330)
       myChart.addCategoryAxis("x", "Acres");
       myChart.addMeasureAxis("y", "# of Properties");
