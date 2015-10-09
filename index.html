@@ -18,17 +18,16 @@
 <body>
 <div id="chartContainer"></div>
 <script type="text/javascript">
-      var svg = dimple.newSvg("#chartContainer", "100%", "100%");
-      d3.csv("https://raw.githubusercontent.com/dfieldsarlington/landuse/gh-pages/landuse_noncompliance_2014.csv", function (data) {
-		data = dimple.filterData(data, "Zone");
-        var myChart = new dimple.chart(newSvg, data);
-        myChart.setBounds(60, 30, 500, 330)
-        myChart.addMeasureAxis("x", "Acres");
-        myChart.addMeasureAxis("y", "# of Properties");
-        myChart.addSeries("Zone", dimple.plot.bubble);
-        myChart.addLegend(200, 10, 360, 20, "right");
-        myChart.draw();
-      });
+    var svg = dimple.newSvg("#chartContainer", 590, 400);
+    d3.csv("https://raw.githubusercontent.com/dfieldsarlington/landuse/gh-pages/landuse_noncompliance_2014.csv", function (data) {
+      var myChart = new dimple.chart(svg, data);
+      myChart.setBounds(65, 30, 505, 330)
+      myChart.addCategoryAxis("x", "Acres");
+      myChart.addMeasureAxis("y", "# of Properties");
+      myChart.addSeries("Zone", dimple.plot.bubble);
+      myChart.addLegend(60, 10, 510, 20, "right");
+      myChart.draw();
+    });
   </script>
   </body>
   </html>
