@@ -38,7 +38,7 @@
 		var LineStoryboard = myChart.setStoryboard("Zone");
 		LineStoryboard.categoryFields = [null];
 		myChart.draw();
-	    d3.selectAll("circle").style("stroke-width", 5);
+	    
 		LineStoryboard.storyLabel.remove();
         myChart.legends = [];
         var filterValues = dimple.getUniqueValues(data, "Zone");
@@ -61,6 +61,7 @@
             }
             filterValues = newFilters;
             myChart.data = dimple.filterData(data, "Zone", filterValues);
+			d3.selectAll("circle").style("stroke-width", 2);
             myChart.draw(800);
 			
           });
