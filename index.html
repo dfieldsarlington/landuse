@@ -27,13 +27,18 @@
         myChart.addMeasureAxis("y", "# of Properties");
         myChart.addSeries("Zone", dimple.plot.bubble);
 		myChart.assignColor("B1", "#FFBEBE");
-		myChart.assignColor("B2","FF7F7F");
+		myChart.assignColor("B2","#FF7F7F");
+		myChart.assignColor("B2","#FF0000");
+		myChart.assignColor("B2","#A80000");
+		myChart.assignColor("B2","#FF73DF");
+		myChart.assignColor("B2","#E600A9");
+		myChart.assignColor("B2","#A900E6");
         var LineLegend = myChart.addLegend ("70%", "10%", "10%", "90%", "right");
 	  LineLegend.fontSize = "auto";
 		var LineStoryboard = myChart.setStoryboard("Zone");
 		LineStoryboard.categoryFields = [null];
 		myChart.draw();
-	
+	    d3.selectAll("circle").style("stroke-width", 5);
 		LineStoryboard.storyLabel.remove();
         myChart.legends = [];
         var filterValues = dimple.getUniqueValues(data, "Zone");
@@ -57,7 +62,7 @@
             filterValues = newFilters;
             myChart.data = dimple.filterData(data, "Zone", filterValues);
             myChart.draw(800);
-			d3.selectAll("circle").style("stroke-width", 5);
+			
           });
 		  
       });
