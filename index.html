@@ -26,12 +26,13 @@
         myChart.addMeasureAxis("x", "Acres");
         myChart.addMeasureAxis("y", "# of Properties");
         myChart.addSeries("Zone", dimple.plot.bubble);
-		myChart.assignColor("B1", "#FFBEBE");
+		myChart.assignColor(["B1", "#FFBEBE"],["B2", "FF7F7F"]);
         var LineLegend = myChart.addLegend ("70%", "10%", "10%", "90%", "right");
 	  LineLegend.fontSize = "auto";
 		var LineStoryboard = myChart.setStoryboard("Zone");
 		LineStoryboard.categoryFields = [null];
 		myChart.draw();
+	
 		LineStoryboard.storyLabel.remove();
         myChart.legends = [];
         var filterValues = dimple.getUniqueValues(data, "Zone");
