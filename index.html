@@ -26,11 +26,37 @@
         myChart.addMeasureAxis("x", "Acres");
         myChart.addMeasureAxis("y", "# of Properties");
         myChart.addSeries("Zone", dimple.plot.bubble);
-        myChart.addLegend("70%", "10%", "10%", "90%", "right");
-        myChart.draw();var ChartStoryboard = myChart("Zone");
-		ChartStoryboard.categoryFields = [null];
-		mychart.draw(600);
-		ChartStoryboard.storyLabel.remove();
+
+        var LineLegend = myChart.addLegend ("70%", "10%", "10%", "90%", "right");
+	  LineLegend.fontSize = "auto";
+		var LineStoryboard = myChart.setStoryboard("Zone");
+		LineStoryboard.categoryFields = [null];
+		myChart.draw();
+		LineStoryboard.storyLabel.remove();
+        myChart.legends = [];
+        var filterValues = dimple.getUniqueValues(data, "Zone");
+        LineLegend.shapes.selectAll("rect")
+          .on("click", function (e) {
+            var hide = false;
+            var newFilters = [];
+            filterValues.forEach(function (f) {
+              if (f === e.aggField.slice(-1)[0]) {
+                hide = true;
+              } else {
+                newFilters.push(f);
+              }
+            });
+            if (hide) {
+              d3.select(this).style("opacity", 0.2);
+            } else {
+              newFilters.push(e.aggField.slice(-1)[0]);
+              d3.select(this).style("opacity", 0.8);
+            }
+            filterValues = newFilters;
+            myChart.data = dimple.filterData(data, "Zone", filterValues);
+            myChart.draw(800);
+          });
+		  
       });
   </script>
   </body>
