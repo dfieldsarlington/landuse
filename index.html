@@ -37,18 +37,6 @@
 	  LineLegend.fontSize = "auto";
 		var LineStoryboard = myChart.setStoryboard("Zone");
 		LineStoryboard.categoryFields = [null];
-		//Explanation
-          svg.selectAll("Zone")
-            .data(["Plot bubble size is relative to Gross",
-              "Domestic Product (GDP) per capita, in ",
-              "$US, adjusted for inflation to year 2000."])
-            .enter()
-            .append("text")
-            .attr("x", 600)
-            .attr("y", function (d, i) { return padding + 28 + i * 12; })
-            .style("font-size", "10px")
-            .style("font-family", "sans-serif")
-            .text(function (d) { return d; });
 		myChart.draw();
 		LineStoryboard.storyLabel.remove();
         myChart.legends = [];
