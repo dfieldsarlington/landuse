@@ -56,6 +56,7 @@
             filterValues = newFilters;
             myChart.data = dimple.filterData(data, "Zone", filterValues);
             myChart.draw(800);
+			d3.selectAll("circle").style("stroke-width", 2);
           });
 		  
       });
